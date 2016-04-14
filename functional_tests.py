@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import unittest
 from distutils.dist import warnings
-from time import sleep
+import time
 
 class NewVisitorTest(unittest.TestCase):
     
@@ -34,6 +34,8 @@ class NewVisitorTest(unittest.TestCase):
         #她按回车键后，页面更新了
         #待办事项表格中显示了“1：Buy a new nipple”
         inputbox.send_keys(Keys.ENTER)
+        
+        #time.sleep(5)
         
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
