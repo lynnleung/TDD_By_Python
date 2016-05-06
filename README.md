@@ -1,4 +1,15 @@
 # TDD_By_Python
 exercise while reading and study the TDD by Python from Harry.
-These codes are copied from Test Driven Development with Python while I am reading it.
+<<<<<<< HEAD
+
+=======
+
+Hi Everyone,
+
+Thanks for this wonderful platform!
+Thanks Harry!
+In whose book, I got to know Git!
+
+Nice try and nice journey!
+>>>>>>> master
 
