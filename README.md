@@ -1,5 +1,8 @@
 # TDD_By_Python
 exercise while reading and study the TDD by Python from Harry.
+<<<<<<< HEAD
+
+=======
 
 Hi Everyone,
 
@@ -8,4 +11,5 @@ Thanks Harry!
 In whose book, I got to know Git!
 
 Nice try and nice journey!
+>>>>>>> master
 
