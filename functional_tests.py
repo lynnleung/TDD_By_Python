@@ -45,13 +45,25 @@ class NewVisitorTest(unittest.TestCase):
         #页面中又显示了一个文本框，可以输入其他的待办事项
         #她输入了“Use a new nipple to drink water”
         #安妮做事很有条理
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox.send_keys('Use a new nipple to drink water')
+        inputbox.send_keys(Keys.ENTER)
+        
+        #页面再次更新，她的清单中显示了这两个待办事项
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn('1:Buy a new nipple', [row.text for row in rows])
+        self.assertIn('2:Use a new nipple to drink water', [row.text for row in rows])
+        
+        
+        
             
         self.fail('Finish the test!')
 
 if __name__ == '__main__':
     unittest.main()
 
-#页面再次更新，她的清单中显示了这两个待办事项
+
 
 
 #安妮想知道这个网站是否会记住她的清单
