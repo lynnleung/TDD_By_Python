@@ -4,10 +4,12 @@ import unittest
 from distutils.dist import warnings
 import time
 
+chromedriver = "C:\Program Files\Google\Chrome\Application\chromedriver"
+
 class NewVisitorTest(unittest.TestCase):
     
     def setUp(self):
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Chrome(chromedriver)
         self.browser.implicitly_wait(3)
     
     def tearDown(self):
@@ -35,21 +37,25 @@ class NewVisitorTest(unittest.TestCase):
         #待办事项表格中显示了“1：Buy a new nipple”
         inputbox.send_keys(Keys.ENTER)
         
-        #time.sleep(5)
+        time.sleep(5)
         
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertTrue(any(row.text == '1:Buy a new nipple' for row in rows),
-                        "New to-do item did not appear in table")
+        #self.assertTrue(any(row.text == '1:Buy a new nipple' for row in rows),
+        #                "New to-do item did not appear in table -- its text was:\n%s" %(table.text)
+        
+        self.assertIn('1: Buy a new nipple', [row.text for row in rows])
         
         #页面中又显示了一个文本框，可以输入其他的待办事项
         #她输入了“Use a new nipple to drink water”
         #安妮做事很有条理
+        time.sleep(5)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Use a new nipple to drink water')
         inputbox.send_keys(Keys.ENTER)
         
         #页面再次更新，她的清单中显示了这两个待办事项
+        time.sleep(5)
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertIn('1:Buy a new nipple', [row.text for row in rows])
